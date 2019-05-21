@@ -4,7 +4,7 @@ Sample scripts and steps to demonstrate global load balancing of gRPC server usi
 ## Background
 The steps and scripts in this project setup GCE environment for gRPC service and clients. The example here uses Traffic Director (GCP) as load balancer, but istio can also be configured to provide the same functionality.
 
-NOTE: As time passes the scripts and the steps mentioned here will get stale. Please refer to actual GCP documentation for update steps and commands to configured GCE and Traffic Director (GCP).
+**NOTE: As time passes the scripts and the steps mentioned here will get stale. Please refer to actual GCP documentation for update steps and commands to configured GCE and Traffic Director (GCP).**
 
 ### Sample gRPC application 
 The sample gRPC application creates gRPC service on the passed port (defaults to :5000), and optionally starts a http service to report the health of the service (running on port :80). The gRPC service can be configured to run on :80 in which case there is no need to start the http service.
@@ -12,10 +12,7 @@ The sample gRPC application creates gRPC service on the passed port (defaults to
 The sample gRPC service returns the hostname of the server.
 
 ### Sample gRPC client 
-The gRPC client accumulates the rpc status and reports the following for every 50 consecutive requests.
-
--- Region (which served the request)
-   + -- Hosts (which served the request)
+The gRPC client accumulates the rpc status and reports for every 50 requests, the number of requests that were directed to a region(Continent) and the endpoint within that continent.
    
 This will enable us to see how the requests from the clients, move from one region to another in case of failures.
 
@@ -41,7 +38,7 @@ Run the script to create two VMs each on continents US and Asia.
 
 Check the GCP console to verify if the VMs for the servers are created. Also verify if traffic director configuration to see if two managed instance groups are created for the service.
 
-NOTE: The servers/endpoints will show up as unhealthy as we have not yet deployed the gRPC service on them.
+**NOTE: The servers/endpoints will show up as unhealthy as we have not yet deployed the gRPC service on them.**
 
 ### Step 4: Build and deploy gRPC service on each VM
 The greeter_server needs to be built locally before it can be deployed on the servers.
