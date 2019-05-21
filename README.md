@@ -88,17 +88,21 @@ The greeter client needs to be built locally before it can be deployed on the cl
 $ go build -o main_client helloworld/greeter_client/main.go
 ```
 
-Copy over the 'main_client' binary, 'layout.html' (for rendering results) and grpc_client.sh to each of the client VMs.
+Copy over the 'main_client' binary, 'layout.html' (for rendering results) and start_client.sh to each of the client VMs.
 
 ```
 gcloud compute scp main_client <client-name>:~ --zone <client-zone>
-gcloud compute scp grpc_client.sh <client-name>:~ --zone <client-zone>
+gcloud compute scp start_client.sh <client-name>:~ --zone <client-zone>
 gcloud compute scp helloworld/greeter_client/layout.html <client-name>:~ --zone <client-zone>
 ```
 
 ### Step 7: Test the global loadbalancing 
 
 Run the grpc_client on each of the client VMs, and check their results which are reported by the http server on those VMs.
+```
+$ ./start_client.sh
+```
+
 You can also bring down the gRPC servers on one or more servers to see its impact on the client by running.
 
 ```
