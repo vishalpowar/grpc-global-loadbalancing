@@ -1,0 +1,39 @@
+<style>
+table, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+th, td {
+	padding: 5px;
+	text-align: left;    
+}
+</style>
+<h1>{{.PageTitle}}<h1>
+<table style="width:100%;font-size:24px">
+	<tr bgcolor="#AAAAAA">
+		<th>Time</th>
+		<th>Continent</th> 
+		<th>Endpoint:Requests</th>
+	</tr>
+
+	{{range .Rows}}
+		<tr>
+		<td rowspan="3">{{.Time}} </td>
+		{{range .Continents}}
+			<tr>
+			<th>{{.Name}}</th>
+			<td>
+			<table style="width=100%;font-size:24px">
+			{{range .Hosts}}
+				<tr>
+				<th>{{.HostName}}</th>
+				<th>{{.Count}}</th>
+				</tr>
+			{{end}}
+			</table>
+			</td>
+			</tr>
+		{{end}}
+		</tr>
+	{{end}}
+</table>
