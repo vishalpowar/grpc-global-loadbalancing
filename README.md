@@ -58,15 +58,12 @@ SSH into each of the servers and start the service.
 
 ```
 $gcloud compute --project "<project-id>" ssh --zone "<zone>" "<server-name>"
+```
 
-The programs included with the Debian GNU/Linux system are free software;
-the exact distribution terms for each program are described in the
-individual files in /usr/share/doc/*/copyright.
+Start the server by running the following command.
 
-Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
-permitted by applicable law.
-Last login: Tue May 21 13:25:36 2019 from 104.133.8.95
-<user>@<servername>:~$ ./grpc_server.sh startall
+```
+$ ./grpc_server.sh startall
 ```
 
 Verify the traffic director configuration to see if both the managed instance groups are now healthy.
