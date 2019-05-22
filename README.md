@@ -24,7 +24,7 @@ Create GCP project (assuming project name as 'kubecon-2019' for subsequent steps
 As we will be running scripts to setup the configuration, enable the [gcloud command line](https://cloud.google.com/sdk/docs/#linux).
 
 ### Step 2: Enable support for Traffic Director API
-Run the following command 
+Run the following command to enable Traffic Director for the project.
 ```
 gcloud services enable trafficdirector.googleapis.com
 ```
@@ -36,7 +36,7 @@ Run the script to create two VMs each on continents US and Asia.
 ./create_mig_grpc.sh
 ```
 
-Check the GCP console to verify if the VMs for the servers are created. Also verify if traffic director configuration to see if two managed instance groups are created for the service.
+Check the GCP console to verify if the VMs for the servers are created. Also, check traffic director configuration and verify if two managed instance groups are created for the service.
 
 **NOTE: The servers/endpoints will show up as unhealthy as we have not yet deployed the gRPC service on them.**
 
@@ -60,7 +60,7 @@ SSH into each of the servers and start the service.
 $gcloud compute --project "<project-id>" ssh --zone "<zone>" "<server-name>"
 ```
 
-Start the server by running the following command.
+The server can be started by running the following command.
 
 ```
 $ ./grpc_server.sh startall
