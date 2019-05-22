@@ -96,6 +96,7 @@ Run the grpc_client on each of the client VMs, and check their results which are
 ```
 $ ./start_client.sh
 ```
+**NOTE: Find the external IP address of the client VM and use that ip address in the browser to see results.**
 
 You can also bring down the gRPC servers on one or more servers to see its impact on the client by running.
 
